@@ -94,3 +94,10 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+# Virtual Router related variables.
+variable "listeners" {
+  description = "Listeners that the virtual router is expected to receive inbound traffic from. Currently only one listener is supported per virtual router."
+  type        = any
+  default     = null
+}

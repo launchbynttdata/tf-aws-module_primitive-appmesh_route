@@ -157,12 +157,12 @@ No modules.
 | <a name="input_priority"></a> [priority](#input\_priority) | Optional priority attached to the route | `number` | `0` | no |
 | <a name="input_app_mesh_name"></a> [app\_mesh\_name](#input\_app\_mesh\_name) | Id of the App Mesh where the virtual gateway route will reside | `string` | n/a | yes |
 | <a name="input_virtual_router_name"></a> [virtual\_router\_name](#input\_virtual\_router\_name) | Id of the Virtual Router to associated with this gateway route | `string` | n/a | yes |
-| <a name="input_route_targets"></a> [route\_targets](#input\_route\_targets) | A list of targets each assigned with a weight to route traffic to | <pre>list(object({<br>    virtual_node_name = string<br>    virtual_node_port = number<br>    weight            = number<br>    }<br>  ))</pre> | n/a | yes |
+| <a name="input_route_targets"></a> [route\_targets](#input\_route\_targets) | A list of targets each assigned with a weight to route traffic to | <pre>list(object({<br>    virtual_node_name = string<br>    virtual_node_port = number<br>    weight            = number<br>    }<br>  ))</pre> | `[]` | no |
 | <a name="input_retry_policy"></a> [retry\_policy](#input\_retry\_policy) | Rules for retry policies to be applied to this route | <pre>object({<br>    http_retry_events = list(string)<br>    max_retries       = number<br>    per_entry_timeout = object({<br>      unit  = string<br>      value = number<br>    })<br>    tcp_retry_events = list(string)<br>  })</pre> | `null` | no |
 | <a name="input_idle_duration"></a> [idle\_duration](#input\_idle\_duration) | Idle duration for all the listeners | <pre>object({<br>    unit  = string<br>    value = number<br>  })</pre> | `null` | no |
 | <a name="input_per_request_timeout"></a> [per\_request\_timeout](#input\_per\_request\_timeout) | Per Request timeout for all the listeners | <pre>object({<br>    unit  = string<br>    value = number<br>  })</pre> | `null` | no |
 | <a name="input_match_path_prefix"></a> [match\_path\_prefix](#input\_match\_path\_prefix) | Gateway route match path prefix. Default is `/`. Conflicts with var.match\_path\_exact and var.match\_path\_regex | `string` | `"/"` | no |
-| <a name="input_virtual_router_port"></a> [virtual\_router\_port](#input\_virtual\_router\_port) | Match the port for incoming traffic from Virtual router | `number` | n/a | yes |
+| <a name="input_virtual_router_port"></a> [virtual\_router\_port](#input\_virtual\_router\_port) | Match the port for incoming traffic from Virtual router | `number` | `8080` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | An arbitrary map of tags that can be added to all resources. | `map(string)` | `{}` | no |
 
 ## Outputs
