@@ -16,7 +16,8 @@ module "appmesh" {
   name = var.app_mesh_name
 }
 module "virtual_router" {
-  source = "git::https://github.com/launchbynttdata/tf-aws-module_primitive-virtual_router?ref=1.0.0"
+  source     = "git::https://github.com/launchbynttdata/tf-aws-module_primitive-virtual_router?ref=1.0.0"
+  depends_on = [module.appmesh]
 
   name          = var.virtual_router_name
   app_mesh_name = var.app_mesh_name
@@ -24,7 +25,8 @@ module "virtual_router" {
 }
 
 module "appmesh_route" {
-  source = "../.."
+  source     = "../.."
+  depends_on = [module.virtual_router]
 
   name                = var.name
   app_mesh_name       = var.app_mesh_name
