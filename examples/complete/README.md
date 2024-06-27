@@ -17,7 +17,12 @@ No providers.
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_appmesh"></a> [appmesh](#module\_appmesh) | git::https://github.com/launchbynttdata/tf-aws-module_primitive-appmesh | 1.0.1 |
-| <a name="module_virtual_router"></a> [virtual\_router](#module\_virtual\_router) | git::https://github.com/launchbynttdata/tf-aws-module_primitive-virtual_router | 1.0.0 |
+| <a name="module_virtual_router"></a> [virtual\_router](#module\_virtual\_router) | git::https://github.com/launchbynttdata/tf-aws-module_primitive-virtual_router | 1.0.1 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | 5.0.0 |
+| <a name="module_private_ca"></a> [private\_ca](#module\_private\_ca) | git::https://github.com/launchbynttdata/tf-aws-module_primitive-private_ca | 1.0.1 |
+| <a name="module_namespace"></a> [namespace](#module\_namespace) | git::https://github.com/launchbynttdata/tf-aws-module_primitive-private_dns_namespace | 1.0.0 |
+| <a name="module_private_cert"></a> [private\_cert](#module\_private\_cert) | git::https://github.com/launchbynttdata/tf-aws-module_primitive-acm_private_cert | 1.0.1 |
+| <a name="module_virtual_node"></a> [virtual\_node](#module\_virtual\_node) | git::https://github.com/launchbynttdata/tf-aws-module_primitive-virtual_node | 1.0.1 |
 | <a name="module_appmesh_route"></a> [appmesh\_route](#module\_appmesh\_route) | ../.. | n/a |
 
 ## Resources
@@ -33,13 +38,28 @@ No resources.
 | <a name="input_app_mesh_name"></a> [app\_mesh\_name](#input\_app\_mesh\_name) | Id of the App Mesh where the virtual gateway route will reside | `string` | n/a | yes |
 | <a name="input_virtual_router_name"></a> [virtual\_router\_name](#input\_virtual\_router\_name) | Id of the Virtual Router to associated with this gateway route | `string` | n/a | yes |
 | <a name="input_route_targets"></a> [route\_targets](#input\_route\_targets) | A list of targets each assigned with a weight to route traffic to | <pre>list(object({<br>    virtual_node_name = string<br>    virtual_node_port = number<br>    weight            = number<br>    }<br>  ))</pre> | `[]` | no |
-| <a name="input_retry_policy"></a> [retry\_policy](#input\_retry\_policy) | Rules for retry policies to be applied to this route | <pre>object({<br>    http_retry_events = list(string)<br>    max_retries       = number<br>    per_entry_timeout = object({<br>      unit  = string<br>      value = number<br>    })<br>    tcp_retry_events = list(string)<br>  })</pre> | `null` | no |
 | <a name="input_idle_duration"></a> [idle\_duration](#input\_idle\_duration) | Idle duration for all the listeners | <pre>object({<br>    unit  = string<br>    value = number<br>  })</pre> | `null` | no |
 | <a name="input_per_request_timeout"></a> [per\_request\_timeout](#input\_per\_request\_timeout) | Per Request timeout for all the listeners | <pre>object({<br>    unit  = string<br>    value = number<br>  })</pre> | `null` | no |
-| <a name="input_match_path_prefix"></a> [match\_path\_prefix](#input\_match\_path\_prefix) | Gateway route match path prefix. Default is `/`. Conflicts with var.match\_path\_exact and var.match\_path\_regex | `string` | `"/"` | no |
 | <a name="input_virtual_router_port"></a> [virtual\_router\_port](#input\_virtual\_router\_port) | Match the port for incoming traffic from Virtual router | `number` | `8080` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | An arbitrary map of tags that can be added to all resources. | `map(string)` | `{}` | no |
 | <a name="input_listeners"></a> [listeners](#input\_listeners) | Listeners that the virtual router is expected to receive inbound traffic from. Currently only one listener is supported per virtual router. | `any` | `null` | no |
+| <a name="input_virtual_node_name"></a> [virtual\_node\_name](#input\_virtual\_node\_name) | Name of the virtual node to be associated with the virtual gateway route | `string` | n/a | yes |
+| <a name="input_vpc_name"></a> [vpc\_name](#input\_vpc\_name) | Name of the VPC to be associated with the virtual gateway route | `string` | n/a | yes |
+| <a name="input_vpc_cidr"></a> [vpc\_cidr](#input\_vpc\_cidr) | CIDR block of the VPC to be associated with the virtual gateway route | `string` | n/a | yes |
+| <a name="input_private_subnets"></a> [private\_subnets](#input\_private\_subnets) | List of private subnets to be associated with the virtual gateway route | `list(string)` | n/a | yes |
+| <a name="input_availability_zones"></a> [availability\_zones](#input\_availability\_zones) | List of availability zones to be associated with the virtual gateway route | `list(string)` | n/a | yes |
+| <a name="input_certificate_authority_arns"></a> [certificate\_authority\_arns](#input\_certificate\_authority\_arns) | List of certificate authority ARNs to be associated with the virtual gateway route | `list(string)` | n/a | yes |
+| <a name="input_health_check_path"></a> [health\_check\_path](#input\_health\_check\_path) | Path to be used for health checks | `string` | n/a | yes |
+| <a name="input_tls_enforce"></a> [tls\_enforce](#input\_tls\_enforce) | Flag to enforce TLS | `bool` | `false` | no |
+| <a name="input_tls_mode"></a> [tls\_mode](#input\_tls\_mode) | TLS mode to be used | `string` | `"STRICT"` | no |
+| <a name="input_ports"></a> [ports](#input\_ports) | List of ports to be associated with the virtual gateway route | `list(number)` | n/a | yes |
+| <a name="input_health_check_config"></a> [health\_check\_config](#input\_health\_check\_config) | Health check configuration | <pre>object({<br>    healthy_threshold   = number<br>    interval_millis     = number<br>    timeout_millis      = number<br>    unhealthy_threshold = number<br>  })</pre> | n/a | yes |
+| <a name="input_namespace_name"></a> [namespace\_name](#input\_namespace\_name) | Name of the namespace to be associated with the virtual gateway route | `string` | n/a | yes |
+| <a name="input_service_name"></a> [service\_name](#input\_service\_name) | Name of the service to be associated with the virtual gateway route | `string` | n/a | yes |
+| <a name="input_logical_product_family"></a> [logical\_product\_family](#input\_logical\_product\_family) | Logical product family | `string` | n/a | yes |
+| <a name="input_logical_product_service"></a> [logical\_product\_service](#input\_logical\_product\_service) | Logical product service | `string` | n/a | yes |
+| <a name="input_environment"></a> [environment](#input\_environment) | Environment | `string` | n/a | yes |
+| <a name="input_region"></a> [region](#input\_region) | Region | `string` | n/a | yes |
 
 ## Outputs
 

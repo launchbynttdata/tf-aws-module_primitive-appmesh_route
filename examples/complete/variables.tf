@@ -42,21 +42,6 @@ variable "route_targets" {
   default = []
 }
 
-variable "retry_policy" {
-  description = "Rules for retry policies to be applied to this route"
-  type = object({
-    http_retry_events = list(string)
-    max_retries       = number
-    per_entry_timeout = object({
-      unit  = string
-      value = number
-    })
-    tcp_retry_events = list(string)
-  })
-
-  default = null
-}
-
 variable "idle_duration" {
   description = "Idle duration for all the listeners"
   type = object({
@@ -73,13 +58,6 @@ variable "per_request_timeout" {
     value = number
   })
   default = null
-}
-
-# Match related variables.
-variable "match_path_prefix" {
-  description = "Gateway route match path prefix. Default is `/`. Conflicts with var.match_path_exact and var.match_path_regex"
-  type        = string
-  default     = "/"
 }
 
 variable "virtual_router_port" {
@@ -100,4 +78,97 @@ variable "listeners" {
   description = "Listeners that the virtual router is expected to receive inbound traffic from. Currently only one listener is supported per virtual router."
   type        = any
   default     = null
+}
+
+# Virtual Node related variables.
+variable "virtual_node_name" {
+  description = "Name of the virtual node to be associated with the virtual gateway route"
+  type        = string
+}
+
+variable "vpc_name" {
+  description = "Name of the VPC to be associated with the virtual gateway route"
+  type        = string
+}
+
+variable "vpc_cidr" {
+  description = "CIDR block of the VPC to be associated with the virtual gateway route"
+  type        = string
+}
+
+variable "private_subnets" {
+  description = "List of private subnets to be associated with the virtual gateway route"
+  type        = list(string)
+}
+
+variable "availability_zones" {
+  description = "List of availability zones to be associated with the virtual gateway route"
+  type        = list(string)
+}
+
+variable "certificate_authority_arns" {
+  description = "List of certificate authority ARNs to be associated with the virtual gateway route"
+  type        = list(string)
+}
+
+variable "health_check_path" {
+  description = "Path to be used for health checks"
+  type        = string
+}
+
+variable "tls_enforce" {
+  description = "Flag to enforce TLS"
+  type        = bool
+  default     = false
+}
+
+variable "tls_mode" {
+  description = "TLS mode to be used"
+  type        = string
+  default     = "STRICT"
+}
+
+variable "ports" {
+  description = "List of ports to be associated with the virtual gateway route"
+  type        = list(number)
+}
+
+variable "health_check_config" {
+  description = "Health check configuration"
+  type = object({
+    healthy_threshold   = number
+    interval_millis     = number
+    timeout_millis      = number
+    unhealthy_threshold = number
+  })
+}
+
+variable "namespace_name" {
+  description = "Name of the namespace to be associated with the virtual gateway route"
+  type        = string
+}
+
+variable "service_name" {
+  description = "Name of the service to be associated with the virtual gateway route"
+  type        = string
+}
+
+variable "logical_product_family" {
+  description = "Logical product family"
+  type        = string
+}
+
+variable "logical_product_service" {
+  description = "Logical product service"
+  type        = string
+}
+
+variable "environment" {
+  description = "Environment"
+  type        = string
+}
+
+variable "region" {
+  description = "Region"
+  type        = string
 }
