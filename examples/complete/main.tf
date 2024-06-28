@@ -87,7 +87,7 @@ module "virtual_node" {
 
 module "appmesh_route" {
   source     = "../.."
-  depends_on = [module.virtual_node]
+  depends_on = [module.virtual_node, module.virtual_router]
 
   name                = var.name
   app_mesh_name       = var.app_mesh_name

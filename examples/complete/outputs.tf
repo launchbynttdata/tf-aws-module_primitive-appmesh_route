@@ -19,3 +19,23 @@ output "arn" {
   description = "ARN of the AppMesh route"
   value       = module.appmesh_route.arn
 }
+
+output "name" {
+  description = "Name of the AppMesh route"
+  value       = module.appmesh_route.name
+}
+
+output "mesh_name" {
+  description = "Name of the AppMesh"
+  value       = module.appmesh.name
+}
+
+output "virtual_router_name" {
+  description = "Name of the Virtual Router"
+  value       = module.virtual_router.name
+}
+
+output "virtual_node_name" {
+  description = "Name of the Virtual Node"
+  value       = module.virtual_node.name
+}

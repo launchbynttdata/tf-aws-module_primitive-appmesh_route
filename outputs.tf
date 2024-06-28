@@ -19,3 +19,8 @@ output "arn" {
   description = "ARN of the AppMesh route"
   value       = aws_appmesh_route.this.arn
 }
+
+output "name" {
+  description = "Name of the AppMesh route"
+  value       = aws_appmesh_route.this.name
+}

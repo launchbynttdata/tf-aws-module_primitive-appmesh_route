@@ -67,4 +67,8 @@ No resources.
 |------|-------------|
 | <a name="output_id"></a> [id](#output\_id) | ID of the AppMesh route |
 | <a name="output_arn"></a> [arn](#output\_arn) | ARN of the AppMesh route |
+| <a name="output_name"></a> [name](#output\_name) | Name of the AppMesh route |
+| <a name="output_mesh_name"></a> [mesh\_name](#output\_mesh\_name) | Name of the AppMesh |
+| <a name="output_virtual_router_name"></a> [virtual\_router\_name](#output\_virtual\_router\_name) | Name of the Virtual Router |
+| <a name="output_virtual_node_name"></a> [virtual\_node\_name](#output\_virtual\_node\_name) | Name of the Virtual Node |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
