@@ -39,6 +39,7 @@ variable "route_targets" {
     weight            = number
     }
   ))
+  default = []
 }
 
 variable "retry_policy" {
@@ -84,6 +85,7 @@ variable "match_path_prefix" {
 variable "virtual_router_port" {
   description = "Match the port for incoming traffic from Virtual router"
   type        = number
+  default     = 8080
 }
 
 
