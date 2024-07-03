@@ -16,13 +16,13 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_appmesh"></a> [appmesh](#module\_appmesh) | git::https://github.com/launchbynttdata/tf-aws-module_primitive-appmesh | 1.0.1 |
-| <a name="module_virtual_router"></a> [virtual\_router](#module\_virtual\_router) | git::https://github.com/launchbynttdata/tf-aws-module_primitive-virtual_router | 1.0.1 |
+| <a name="module_appmesh"></a> [appmesh](#module\_appmesh) | terraform.registry.launch.nttdata.com/module_primitive/appmesh/aws | ~> 1.0 |
+| <a name="module_virtual_router"></a> [virtual\_router](#module\_virtual\_router) | terraform.registry.launch.nttdata.com/module_primitive/virtual_router/aws | ~> 1.0 |
 | <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | 5.0.0 |
-| <a name="module_private_ca"></a> [private\_ca](#module\_private\_ca) | git::https://github.com/launchbynttdata/tf-aws-module_primitive-private_ca | 1.0.1 |
-| <a name="module_namespace"></a> [namespace](#module\_namespace) | git::https://github.com/launchbynttdata/tf-aws-module_primitive-private_dns_namespace | 1.0.0 |
-| <a name="module_private_cert"></a> [private\_cert](#module\_private\_cert) | git::https://github.com/launchbynttdata/tf-aws-module_primitive-acm_private_cert | 1.0.1 |
-| <a name="module_virtual_node"></a> [virtual\_node](#module\_virtual\_node) | git::https://github.com/launchbynttdata/tf-aws-module_primitive-virtual_node | 1.0.1 |
+| <a name="module_private_ca"></a> [private\_ca](#module\_private\_ca) | terraform.registry.launch.nttdata.com/module_primitive/private_ca/aws | ~> 1.0 |
+| <a name="module_namespace"></a> [namespace](#module\_namespace) | terraform.registry.launch.nttdata.com/module_primitive/private_dns_namespace/aws | ~> 1.0 |
+| <a name="module_private_cert"></a> [private\_cert](#module\_private\_cert) | terraform.registry.launch.nttdata.com/module_primitive/acm_private_cert/aws | ~> 1.0 |
+| <a name="module_virtual_node"></a> [virtual\_node](#module\_virtual\_node) | terraform.registry.launch.nttdata.com/module_primitive/virtual_node/aws | ~> 1.0 |
 | <a name="module_appmesh_route"></a> [appmesh\_route](#module\_appmesh\_route) | ../.. | n/a |
 
 ## Resources

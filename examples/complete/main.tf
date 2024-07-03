@@ -11,12 +11,14 @@
 // limitations under the License.
 
 module "appmesh" {
-  source = "git::https://github.com/launchbynttdata/tf-aws-module_primitive-appmesh?ref=1.0.1"
+  source  = "terraform.registry.launch.nttdata.com/module_primitive/appmesh/aws"
+  version = "~> 1.0"
 
   name = var.app_mesh_name
 }
 module "virtual_router" {
-  source     = "git::https://github.com/launchbynttdata/tf-aws-module_primitive-virtual_router?ref=1.0.1"
+  source     = "terraform.registry.launch.nttdata.com/module_primitive/virtual_router/aws"
+  version    = "~> 1.0"
   depends_on = [module.appmesh]
 
   name          = var.virtual_router_name
@@ -39,7 +41,8 @@ module "vpc" {
 }
 
 module "private_ca" {
-  source = "git::https://github.com/launchbynttdata/tf-aws-module_primitive-private_ca?ref=1.0.1"
+  source  = "terraform.registry.launch.nttdata.com/module_primitive/private_ca/aws"
+  version = "~> 1.0"
 
   count = length(var.certificate_authority_arns) == 0 ? 1 : 0
 
@@ -51,7 +54,8 @@ module "private_ca" {
 }
 
 module "namespace" {
-  source = "git::https://github.com/launchbynttdata/tf-aws-module_primitive-private_dns_namespace?ref=1.0.0"
+  source  = "terraform.registry.launch.nttdata.com/module_primitive/private_dns_namespace/aws"
+  version = "~> 1.0"
 
   vpc_id = module.vpc.vpc_id
   name   = var.namespace_name
@@ -59,7 +63,8 @@ module "namespace" {
 }
 
 module "private_cert" {
-  source = "git::https://github.com/launchbynttdata/tf-aws-module_primitive-acm_private_cert?ref=1.0.1"
+  source  = "terraform.registry.launch.nttdata.com/module_primitive/acm_private_cert/aws"
+  version = "~> 1.0"
 
   # Private CA is created if not passed as input
   private_ca_arn = length(var.certificate_authority_arns) == 0 ? module.private_ca[0].private_ca_arn : var.certificate_authority_arns[0]
@@ -67,7 +72,8 @@ module "private_cert" {
 }
 
 module "virtual_node" {
-  source                     = "git::https://github.com/launchbynttdata/tf-aws-module_primitive-virtual_node?ref=1.0.1"
+  source                     = "terraform.registry.launch.nttdata.com/module_primitive/virtual_node/aws"
+  version                    = "~> 1.0"
   depends_on                 = [module.appmesh]
   name                       = var.virtual_node_name
   app_mesh_id                = var.app_mesh_name
