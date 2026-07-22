@@ -12,7 +12,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestAppmeshRoute(t *testing.T, ctx types.TestContext) {
+func TestComposableAppmeshRoute(t *testing.T, ctx types.TestContext) {
 	appmeshClient := appmesh.NewFromConfig(GetAWSConfig(t))
 	routeName := terraform.Output(t, ctx.TerratestTerraformOptions(), "name")
 	meshName := terraform.Output(t, ctx.TerratestTerraformOptions(), "mesh_name")
