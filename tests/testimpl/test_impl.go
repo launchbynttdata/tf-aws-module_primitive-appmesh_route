@@ -14,9 +14,10 @@ import (
 
 func TestComposableAppmeshRoute(t *testing.T, ctx types.TestContext) {
 	appmeshClient := appmesh.NewFromConfig(GetAWSConfig(t))
-	routeName := terraform.Output(t, ctx.TerratestTerraformOptions(), "name")
-	meshName := terraform.Output(t, ctx.TerratestTerraformOptions(), "mesh_name")
-	routerName := terraform.Output(t, ctx.TerratestTerraformOptions(), "virtual_router_name")
+	opts := ctx.TerratestTerraformOptions()
+	routeName := terraform.OutputContext(t, context.TODO(), opts, "name")
+	meshName := terraform.OutputContext(t, context.TODO(), opts, "mesh_name")
+	routerName := terraform.OutputContext(t, context.TODO(), opts, "virtual_router_name")
 
 	output, err := appmeshClient.DescribeRoute(context.TODO(), &appmesh.DescribeRouteInput{
 		MeshName:          &meshName,
