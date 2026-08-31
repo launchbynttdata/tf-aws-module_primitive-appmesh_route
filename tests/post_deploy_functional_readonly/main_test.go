@@ -27,5 +27,5 @@ func TestAppmeshRouteModule(t *testing.T) {
 		}).
 		Build()
 
-	lib.RunNonDestructiveTest(t, *ctx, testimpl.TestAppmeshRoute)
+	lib.RunNonDestructiveTest(t, *ctx, testimpl.TestComposableAppmeshRoute)
 }

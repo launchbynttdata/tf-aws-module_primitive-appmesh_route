@@ -27,5 +27,5 @@ func TestAppmeshRouteModule(t *testing.T) {
 		}).
 		Build()
 
-	lib.RunSetupTestTeardown(t, *ctx, testimpl.TestAppmeshRoute)
+	lib.RunSetupTestTeardown(t, *ctx, testimpl.TestComposableAppmeshRoute)
 }
